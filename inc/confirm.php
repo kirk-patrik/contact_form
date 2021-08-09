@@ -895,7 +895,7 @@
                                 </li>
                                 <li class="width_77 f_sub">
                                     <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['company_name']; ?></p>
+                                        <?php echo $clean['your_name']; ?></p>
                                 </li>
                             </ul>
                         </div>
@@ -909,7 +909,7 @@
                                 </li>
                                 <li class="width_77 f_sub">
                                     <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['your_name']; ?></p>
+                                        <?php echo $clean['email']; ?></p>
                                 </li>
                             </ul>
                         </div>
@@ -923,7 +923,7 @@
                                 </li>
                                 <li class="width_77 f_sub">
                                     <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['furigana']; ?></p>
+                                        <?php echo $clean['company_name']; ?></p>
                                 </li>
                             </ul>
                         </div>
@@ -952,12 +952,12 @@
                                 </li>
                                 <li class="width_77 f_sub">
                                     <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['email']; ?></p>
+                                        <?php echo $clean['contents']; ?></p>
                                 </li>
                             </ul>
                         </div>
                         <!-- Input 6 -->
-                        <div class="wrapper_90">
+                        <!-- <div class="wrapper_90">
                             <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1"
                                 style="justify-content: start;">
                                 <li class="width_23 f_sub">
@@ -971,9 +971,9 @@
                                         <?php echo $clean['confirm-email']; ?></p>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- Radio Button 2 -->
-                        <div class="wrapper_90">
+                        <!-- <div class="wrapper_90">
                             <ul class="flex_1 flex_center txt_left txt_bpad_2 txt_tpad_2 txt_lpad_1 txt_rpad_1 bspace_1"
                                 style="justify-content: start;">
                                 <li class="width_23 f_sub">
@@ -984,7 +984,7 @@
                                 <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
                                     <?php echo $clean['inquiry_type']; ?></p>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- TextArea 1 -->
                         <div class="wrapper_90">
                             <ul class="flex_1 txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1" style="justify-content: start; align-items:
@@ -1002,9 +1002,9 @@
                         </div>
                         <!-- Spacing -->
                         <div class="space_3"></div>
-                        <p class="font_200 noto_bold txt_left txt_bpad_1 wrapper_90 txt_lpad_1">施設情報</p>
+                        <!-- <p class="font_200 noto_bold txt_left txt_bpad_1 wrapper_90 txt_lpad_1">施設情報</p> -->
                         <!-- Input 7 -->
-                        <div class="wrapper_90">
+                        <!-- <div class="wrapper_90">
                             <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_tpad_1 txt_lpad_1 txt_rpad_1"
                                 style="justify-content: start;">
                                 <li class="width_23 f_sub">
@@ -1015,9 +1015,9 @@
                                         <?php echo $clean['location']; ?></p>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- Input 8 -->
-                        <div class="wrapper_90">
+                        <!-- <div class="wrapper_90">
                             <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_tpad_1 txt_lpad_1 txt_rpad_1"
                                 style="justify-content: start;">
                                 <li class="width_23 f_sub">
@@ -1028,19 +1028,15 @@
                                         <?php echo $clean['facility']; ?></p>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
 
                         <input type="hidden" name="customer_attr" value="<?php echo $clean['customer_attr']; ?>">
-                        <input type="hidden" name="company_name" value="<?php echo $clean['company_name']; ?>">
                         <input type="hidden" name="your_name" value="<?php echo $clean['your_name']; ?>">
-                        <input type="hidden" name="furigana" value="<?php echo $clean['furigana']; ?>">
-                        <input type="hidden" name="tel" value="<?php echo $clean['tel']; ?>">
                         <input type="hidden" name="email" value="<?php echo $clean['email']; ?>">
-                        <input type="hidden" name="confirm-email" value="<?php echo $clean['confirm-email']; ?>">
-                        <input type="hidden" name="inquiry_type" value="<?php echo $clean['inquiry_type']; ?>">
+                        <input type="hidden" name="company_name" value="<?php echo $clean['company_name']; ?>">
+                        <input type="hidden" name="tel" value="<?php echo $clean['tel']; ?>">
                         <input type="hidden" name="contents" value="<?php echo $clean['contents']; ?>">
-                        <input type="hidden" name="location" value="<?php echo $clean['location']; ?>">
-                        <input type="hidden" name="facility" value="<?php echo $clean['facility']; ?>">
+                        <input type="hidden" name="agreement" value="<?php echo $clean['agreement']; ?>">
                         <div class="space_3"></div>
                     </div>
                     <div class="space_3"></div>

@@ -17,44 +17,45 @@ $clean['tel'] = mb_convert_kana($clean['tel'], "n");
 $clean['email'] = str_replace(array(" ", "　"), "", $clean['email']);
 $clean['email'] = mb_convert_kana($clean['email'], "askhc");
 
-if(!empty($clean['proceed'])){
-	$page_flag = 1;
-	// セッションの書き込み
-	session_start();
-	$_SESSION['page'] = true;	
-}
+// if(!empty($clean['proceed'])){
+// 	$page_flag = 1;
+// 	// セッションの書き込み
+// 	session_start();
+// 	$_SESSION['page'] = true;	
+// }
 
-elseif( !empty($clean['btn_confirm'])) {
-	session_start();
+if( !empty($clean['btn_confirm'])) {
 	$error = validation($clean);
 
 	if( empty($error) ) {
 
-		if( !empty($_SESSION['page']) && $_SESSION['page'] === true ) {
-			$page_flag = 2;
-			// セッションの書き込み
-			session_start();
-			$_SESSION['page'] = true;
+		if(empty($clean['date2'])) {
+			$clean['date2'] = "なし";
+			$clean['time2'] = "なし";
 		}
-		else {
-			$page_flag = 1;
-		}		
-	}
-	else {
+
+		if(empty($clean['date3'])) {
+			$clean['date3'] = "なし";
+			$clean['time3'] = "なし";
+		}
+
 		$page_flag = 1;
+		// セッションの書き込み
+		session_start();
+		$_SESSION['page'] = true;		
 	}
 
 }
-elseif(!empty($clean['btn_back'])){
-	session_start();
-	$page_flag = 1;
-}
+// elseif(!empty($clean['btn_back'])){
+// 	session_start();
+// 	$page_flag = 1;
+// }
  elseif( !empty($clean['btn_submit']) ) {
 	session_start();
 	if( !empty($_SESSION['page']) && $_SESSION['page'] === true ) {
 		// セッションの削除
 		unset($_SESSION['page']);
-		$page_flag = 3;
+		$page_flag = 2;
 		// 変数とタイムゾーンを初期化
 		$header = null;
 		$body = null;
@@ -167,11 +168,11 @@ function validation($data) {
 	// }
 
 	// 氏名のバリデーション
-	// if( empty($data['company_name']) ) {
-	// 	$error['company_name'] = "「会社名」は入力必須項目です。";
-	// } elseif( 20 < mb_strlen($data['company_name']) ) {
-	// 	$error['company_name'] = "20文字以内で入力してください。";
-	// }
+	if( empty($data['company_name']) ) {
+		$error['company_name'] = "「会社名」は入力必須項目です。";
+	} elseif( 20 < mb_strlen($data['company_name']) ) {
+		$error['company_name'] = "20文字以内で入力してください。";
+	}
 
 		// 氏名のバリデーション
 	if( empty($data['your_name']) ) {
@@ -228,6 +229,10 @@ function validation($data) {
 		$error['contents'] = "20文字以内で入力してください。";
 	}
 
+	if( empty($data['agreement']) ) {
+		$error['agreement'] = "「個人情報の取り扱いについて」に同意します は入力必須項目です。 ";
+	}
+
 	// 日付の検証
 	// if( empty($data['date1']) ) {
 	// 	$error['date1'] = "「日付」は必須項目です。";
@@ -245,15 +250,12 @@ function validation($data) {
 }
 ?>
 
+
 <?php if( $page_flag === 1 ):
-	// 確認画面読み込み
-require_once(dirname(__FILE__)."/inc/contact.php");
- ?>
-<?php elseif( $page_flag === 2 ):
 	// 確認画面読み込み
 require_once(dirname(__FILE__)."/inc/confirm.php");
  ?>
-<?php elseif( $page_flag === 3 ):
+<?php elseif( $page_flag === 2 ):
 	// サンクスページへリダイレクト
 // $url = "https://www.e-vision.co.jp/lp/inc/thanks.php";
 // header('Location: ' . $url, true, 301);
@@ -262,6 +264,6 @@ exit;
  ?>
 <?php else:
 	// フォーム画面読み込み
-// require_once(dirname(__FILE__)."/privacy_protection.html");
-//  ?>
+require_once(dirname(__FILE__)."/inc/contact.php");
+ ?>
 <?php endif; ?>

@@ -73,6 +73,20 @@
     <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
     <script type="text/javascript" src="js/jquery.easeScroll.js"></script>
+
+    <!-- バリデーション読込 -->
+    <link rel="stylesheet" href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css"
+        type="text/css" />
+    <script src="../js/jQuery-Validation-Engine-master/js/languages/jquery.validationEngine-ja.js"
+        type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script>
+    $(function() {
+        jQuery("#form form").validationEngine();
+    });
+    </script>
+
     <!-- スムーススクロール -->
     <script type="text/javascript">
     $(function() {
@@ -648,32 +662,41 @@
                                 class="red bold">*</span></label>
                         <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
                             <input type="checkbox" value="無料相談" name="customer_attr" class="validate[required]"
-                                style=" cursor: pointer; width:14px; height: 14px; opacity: .6">
-                            <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "病院" ){ echo 'checked'; } ?>
+                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
+                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "無料相談" ){ echo 'checked'; } ?>>
+
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">無料相談</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="資料請求"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6">
-                            <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "病院" ){ echo 'checked'; } ?>
+                            <input type="checkbox" value="資料請求" name="customer_attr" class="validate[required]"
+                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
+                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "資料請求" ){ echo 'checked'; } ?>>
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">資料請求</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="オンラインにてデモをご希望"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6">
+                            <input type="checkbox" value="オンラインにてデモをご希望" name="customer_attr" class="validate[required]"
+                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
+                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "オンラインにてデモをご希望" ){ echo 'checked'; } ?>>
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">オンラインにてデモをご希望</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="その他　※詳細はお問い合わせ内容欄に入力をお願いします。"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6">
+                            <input type="checkbox" value="その他　※詳細はお問い合わせ内容欄に入力をお願いします。" name="customer_attr"
+                                class="validate[required]"
+                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
+                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "その他　※詳細はお問い合わせ内容欄に入力をお願いします。" ){ echo 'checked'; } ?>>
                             <label
                                 class="noto_regular txt_5th_color font_75 txt_lpad_05">その他　※詳細はお問い合わせ内容欄に入力をお願いします。</label>
                         </div>
 
                         <p class="font_60 noto_regular txt_5th_color txt_tpad_05" style="opacity: .6;">複数回答可能です。</p>
+
+                        <?php if( !empty($error['customer_attr']) ): ?>
+                        <p class="error_msg bold txt_left font_75" style="margin: 0 0 0 auto; padding-top: 5px;">
+                            <?php echo $error['customer_attr']; ?></p>
+                        <?php endif; ?>
 
                         <!-- spacing -->
                         <div class="space_2"></div>
@@ -682,9 +705,15 @@
                             <label class="noto_bold font_75">お名前 <span class="red bold">*</span></label>
                             <div class="space_05"></div>
                             <input type="text"
-                                class="block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
+                                class="validate[required] block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
                                 placeholder="お名前を入力してください"
-                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;">
+                                value="<?php if( !empty($clean['your_name']) ){ echo $clean['your_name']; } ?>"
+                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"
+                                id="input-name" name="your_name">
+                            <?php if( !empty($error['your_name']) ): ?><p class="error_msg bold txt_left font_75"
+                                style="margin: 0; padding-top: 5px;">
+                                <?php echo $error['your_name']; ?></p>
+                            <?php endif; ?>
                         </div>
                         <!-- spacing -->
                         <div class="space_2"></div>
@@ -692,19 +721,30 @@
                             <label class="noto_bold font_75">メールアドレス <span class="red bold">*</span></label>
                             <div class="space_05"></div>
                             <input type="text"
-                                class="block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
+                                class="validate[required] block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
                                 placeholder="メールアドレスを入力してください"
-                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;">
+                                value="<?php if( !empty($clean['email']) ){ echo $clean['email']; } ?>"
+                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"
+                                id="input-email" name="email">
+                            <?php if( !empty($error['email']) ): ?><p class="error_msg bold txt_left font_75"
+                                style="margin: 0; padding-top: 5px;">
+                                <?php echo $error['email']; ?></p>
+                            <?php endif; ?>
                         </div>
                         <!-- spacing -->
                         <div class="space_2"></div>
                         <div>
                             <label class="noto_bold font_75">会社名 <span class="red bold">*</span></label>
                             <div class="space_05"></div>
-                            <input type="text"
-                                class="block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
+                            <input type="text" name="company_name" id="input-company"
+                                class="validate[required] block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
                                 placeholder="会社名を入力してください"
+                                value="<?php if( !empty($clean['company_name']) ){ echo $clean['company_name']; } ?>"
                                 style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;">
+                            <?php if( !empty($error['company_name']) ): ?><p class="error_msg bold txt_left font_75"
+                                style="margin: 0; padding-top: 5px;">
+                                <?php echo $error['company_name']; ?></p>
+                            <?php endif; ?>
                         </div>
                         <!-- spacing -->
                         <div class="space_2"></div>
@@ -712,9 +752,15 @@
                             <label class="noto_bold font_75">電話番号</label>
                             <div class="space_05"></div>
                             <input type="text"
-                                class="block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
-                                placeholder="電話番号を入力してください（ハイフン有り）"
-                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;">
+                                class="validate[required] block width_100 font_75 txt_tpad_1 txt_bpad_1 txt_lpad_1 txt_rpad_1"
+                                placeholder="電話番号を入力してください（ハイフン有り"
+                                value="<?php if( !empty($clean['tel']) ){ echo $clean['tel']; } ?>"
+                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"
+                                id="input-tel" name="tel">
+                            <?php if( !empty($error['tel']) ): ?><p class="error_msg bold txt_left font_75"
+                                style="margin: 0; padding-top: 5px;">
+                                <?php echo $error['tel']; ?></p>
+                            <?php endif; ?>
 
                             <p class="font_60 noto_med txt_5th_color txt_tpad_05" style="opacity: .6;">
                                 ※リモートワークなどお勤め先ではない場所に連絡をご希望の場合は、携帯番号をご記入ください。</p>
@@ -724,17 +770,28 @@
                         <div>
                             <label class="noto_bold font_75">お問い合せ内容</label>
                             <div class="space_05"></div>
-                            <textarea class="width_100 txt_tpad_1 txt_lpad_1 txt_bpad_1 txt_rpad_1"
+                            <textarea name="contents" id="input-text"
+                                class="validate[required] width_100 txt_tpad_1 txt_lpad_1 txt_bpad_1 txt_rpad_1"
                                 placeholder="例）電話で詳細を聞きたい" rows="5"
-                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"></textarea>
+                                style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"><?php if( !empty($clean['contents']) ){ echo $clean['contents']; } ?></textarea>
+                            <?php if( !empty($error['contents']) ): ?><p class="error_msg bold txt_left font_75"
+                                style="margin: 0; padding-top: 5px;">
+                                <?php echo $error['contents']; ?></p>
+                            <?php endif; ?>
                         </div>
                         <!-- spacing -->
                         <div class="space_2"></div>
                         <p class="font_75 noto_bold">プライバシーポリシー<span class="red"> *</span></p>
                         <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="同意する。"
+                            <input type="checkbox" value="同意する。" class="validate[required]" id="agreement"
+                                name="agreement"
                                 style="cursor: pointer; width: 0.9375vw; height: 0.9375vw; opacity: .6;">
                             <label class="noto_med txt_5th_color font_75 txt_lpad_05">同意する。</label>
+                            <?php if( !empty($error['agreement']) ): ?>
+                            <p class="error_msg bold txt_center"
+                                style="margin: 0; padding-top: 5px; font-size: 0.7rem;">
+                                <?php echo $error['agreement']; ?></p>
+                            <?php endif; ?>
                         </div>
                         <!-- spacing -->
                         <div class="space_1"></div>
@@ -749,7 +806,7 @@
                         <!-- spacing -->
                         <div class="space_2"></div>
                         <div class="txt_center">
-                            <button type="submit" name="btn_confirm" value="確認する"
+                            <button type="submit" name="btn_confirm" value="内容を送信"
                                 class="custom_hover font_75 txt_tpad_1 txt_bpad_1 white"
                                 style="font-family: arial,helvetica,clean,sans-serif; width: 12vw; border-radius: 13vw; border: none; background-color: #ff9500; cursor: pointer;">内容を送信</button>
                         </div>
