@@ -877,9 +877,9 @@
 
                         <!-- spacing -->
                         <div class="space_1"></div>
-                        <div class="font_60 noto_regular txt_5th_color" style="opacity: .6;">
-                            ADlive株式会社の「個人情報保護方針（<a href="https://adlive.asia/privacy" target="_blank" style="text-decoration: underline; color: #551A8B;" class="font_60 noto_regular">https://adlive.asia/privacy</a>）」と「個人情報の取扱いについて（<a href="https://adlive.asia/policy" target="_blank" style="text-decoration: underline; color: #0000EE;" class="font_60 noto_regular">https://adlive.asia/policy</a>）」に同意いただけた場合は「同意する」をチェックしてください。
-                        </div>
+                        <p class="font_65 noto_regular txt_5th_color" style="opacity: .6;">
+                            ADlive株式会社の「個人情報保護方針（<a href="https://adlive.asia/privacy" target="_blank" style="text-decoration: underline; color: #551A8B;" class="font_65 noto_regular">https://adlive.asia/privacy</a>）」と「個人情報の取扱いについて（<a href="https://adlive.asia/policy" target="_blank" style="text-decoration: underline; color: #0000EE;" class="font_65 noto_regular">https://adlive.asia/policy</a>）」に同意いただけた場合は「同意する」をチェックしてください。
+                        </p>
                         <!-- spacing -->
                         <div class="space_2"></div>
                         <div class="txt_center">
