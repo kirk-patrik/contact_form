@@ -628,10 +628,10 @@
         }
     }
 
-    input[type="checkbox"] {
+    /* input[type="checkbox"] {
         width: 1.2vw !important;
         height: 1.2vw !important;
-    }
+    } */
 
     @media (max-width:1050px) {
 
@@ -652,61 +652,68 @@
     }
 
     @media (max-width:770px) {
-        input[type="checkbox"] {
-            width: 3vw !important;
-            height: 3vw !important;
+
+        .site-heading {
+            padding-top: 10vw !important;
+            padding-bottom: 7vw !important;
         }
+
+        input[type="checkbox"] {
+            width: 5vw !important;
+            height: 5vw !important;
+        }
+        .font_75 {
+            font-size: 5vw !important;
+        }
+
+        .heading-text {
+            padding-bottom: 5vw !important;
+        }
+
+        .sp-padding {
+            padding-bottom: 2vw !important;
+            padding-top: 2vw !important;
+        }
+
     }
 
 
     /* custome style for checkbox */
-/* 
-     input[type="checkbox"] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-        visibility: hidden !important;
+              
+input[type='checkbox'] {
+        -webkit-appearance: none;
+        width: 1vw;
+        height: 1vw;
+        outline: none;
+        border-radius: 2px;
+        box-shadow: 0 0 0 2px rgb(217 218 218);
+        position: relative;
+    }
+
+
+    input[type='checkbox']:before {
+        content: '';
+        display: block;
+        width: 32%;
+        height: 60%;
+        border-top: 0;
+        border-left: 0;
+        border-style: solid;
+        border-color: white;
+        margin: 0 auto;
+        transform: rotate(45deg);
         }
 
-        input:checked ~ .checkmark {
-             background-color: #2196F3;
-             border: 3px solid #2196F3;
-        }
 
-        .checkmark {
-            position: absolute;
-            top: -10px;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: white;
-            border: 3px solid #eee;
-            border-radius: 5px;
-        }
+    input[type='checkbox']:checked {
+        background: #0075FF !important;
+        border: 1px solid #0075FF !important;
+        box-shadow: 0 0 0 2px #0075FF !important;
+    }
 
-            input:checked ~ .checkmark:after {
-            display: block;
-            }
 
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            }
 
-            .checkmark:after {
-                left: 0.9vw;
-                top: 0.2vw;
-                width: 5px;
-                height: 10px;
-                border: solid white;
-                border-width: 0 3px 3px 0;
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-                } */
+
 
 
 
@@ -721,25 +728,25 @@
         <!-- CONTACT FORM -->
         <section class="contact_form">
             <div class="">
-                <div style="background-color: #33b9bb;">
-                    <div class="wrapper_60 txt_tpad_2">
+                <div style="background-color: #33b9bb;" class="site-heading">
+                    <div class="wrapper_60 txt_tpad_3 txt_tpad_2">
                         <div class="bg_img">
                             <div class="view_pc">
                                 <img src="../img/logo.png" alt="" class="fix_zoom"
                                 style="width: 27% !important; margin: 0 auto !important;">
                             </div>
-                            <div class="view_tabsp">
+                            <div class="view_tabsp txt_tpad_1 sp_logo">
                                 <img src="../img/logo.png" alt="" class="fix_zoom"
-                                style="width: 61% !important; margin: 0 auto !important;">
+                                style="width: 67% !important; margin: 0 auto !important;">
                             </div>
                         </div>
-                        <p class="white font_125 noto_bold txt_center txt_tpad_05">無料相談・資料請求</p>
+                        <p class="white font_125 noto_bold txt_center txt_tpad_05 heading-text">無料相談・資料請求</p>
                         <div class="space_1"></div>
                         <div class="space_05"></div>
                     </div>
                 </div>
                 <div class="space_4"></div>
-                <div class="cont_wrapper_50">
+                <div class="cont_wrapper_60">
                     <form method="post" action="#form" enctype="multipart/form-data" novalidate
                         class="txt_left">
 
@@ -751,36 +758,33 @@
                              <label class="font_75 noto_bold <?= !empty($error['customer_attr']) ? 'red' : 'txt_5th_color'; ?>  ">複数選択（チェックボックス）<span
                                    class="red bold">*</span></label>
 
-                             <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
-                            
+                            <div class="txt_tpad_05 flex sp-padding" style="align-items: center; justify-content: flex-start;">
+                                   
                                     <input type="checkbox" value="無料相談" name="customer_attr[]" class="validate[required]"
-                                    style="cursor: pointer; opacity: .6"
+                                    style="cursor: pointer; opacity: .6; box-shadow: <?= !empty($error['customer_attr']) ? '0 0 0 2px red  !important;' : '0 0 0 2px rgb(217 218 218) !important;'; ?>"
                                     <?php if( !empty($_POST['customer_attr'][0]) && $_POST['customer_attr'][0] === "無料相談" ){ echo 'checked'; } ?>>
-                                    <span class="checkmark"></span>
-                            
-                                
 
                                 <label class="noto_regular  <?= !empty($error['customer_attr']) ? 'red' : 'txt_5th_color'; ?>  font_75 txt_lpad_05">無料相談</label>
-                             </div>
+                            </div>
 
-                            <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
+                            <div class="txt_tpad_1 flex sp-padding" style="align-items: center; justify-content: flex-start;">
                                 <input type="checkbox" value="資料請求" name="customer_attr[]" class="validate[required]"
-                                    style="cursor: pointer; opacity: .6"
+                                    style="cursor: pointer; opacity: .6; box-shadow: <?= !empty($error['customer_attr']) ? '0 0 0 2px red  !important;' : '0 0 0 2px rgb(217 218 218) !important;'; ?>"
                                     <?php if( !empty($_POST['customer_attr'][1]) && $_POST['customer_attr'][1] === "資料請求" ){ echo 'checked'; } ?>>
                                 <label class="noto_regular  <?= !empty($error['customer_attr']) ? 'red' : 'txt_5th_color'; ?>  font_75 txt_lpad_05">資料請求</label>
                             </div>
 
-                            <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
+                            <div class="txt_tpad_1 flex sp-padding" style="align-items: center; justify-content: flex-start;">
                                 <input type="checkbox" value="オンラインにてデモをご希望" name="customer_attr[]" class="validate[required]"
-                                    style="cursor: pointer; opacity: .6"
+                                    style="cursor: pointer; opacity: .6; box-shadow: <?= !empty($error['customer_attr']) ? '0 0 0 2px red  !important;' : '0 0 0 2px rgb(217 218 218) !important;'; ?>"
                                     <?php if( !empty($_POST['customer_attr'][2]) && $_POST['customer_attr'][2] === "オンラインにてデモをご希望" ){ echo 'checked'; } ?>>
                                 <label class="noto_regular  <?= !empty($error['customer_attr']) ? 'red' : 'txt_5th_color'; ?>  font_75 txt_lpad_05">オンラインにてデモをご希望</label>
                             </div>
 
-                            <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
+                            <div class="txt_tpad_1 sp-padding" style="align-items: center; justify-content: flex-start;">
                                 <input type="checkbox" value="その他　※詳細はお問い合わせ内容欄に入力をお願いします。" name="customer_attr[]"
                                     class="validate[required]"
-                                    style="cursor: pointer; opacity: .6"
+                                    style="cursor: pointer; opacity: .6; box-shadow: <?= !empty($error['customer_attr']) ? '0 0 0 2px red  !important;' : '0 0 0 2px rgb(217 218 218) !important;'; ?>"
                                     <?php if( !empty($_POST['customer_attr'][3]) && $_POST['customer_attr'][3] === "その他　※詳細はお問い合わせ内容欄に入力をお願いします。" ){ echo 'checked'; } ?>>
                                 <label
                                     class="noto_regular  <?= !empty($error['customer_attr']) ? 'red' : 'txt_5th_color'; ?>  font_75 txt_lpad_05">その他　※詳細はお問い合わせ内容欄に入力をお願いします。</label>
@@ -813,8 +817,7 @@
                                 value="<?php if( !empty($clean['your_name']) ){ echo $clean['your_name']; } ?>"
                                 style=" <?= !empty($error['your_name']) ? 'border: 2px solid red; border-radius: 4px; outline: none; background-color: rgb(234, 235, 234)' : 'border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;' ?>   "
                                 id="input-name" name="your_name">
-                            <?php if( !empty($error['your_name']) ): ?><p class="error_msg bold txt_left font_75"
-                                style="margin: 0; padding-top: 5px;">
+                            <?php if( !empty($error['your_name']) ): ?><p class="error_msg bold txt_left font_75 txt_tpad_05 mg_auto">
                                 <?php echo $error['your_name']; ?></p>
                             <?php endif; ?>
                         </div>
@@ -829,8 +832,7 @@
                                 value="<?php if( !empty($clean['email']) ){ echo $clean['email']; } ?>"
                                 style=" <?= !empty($error['email']) ? 'border: 2px solid red; border-radius: 4px; outline: none; background-color: rgb(234, 235, 234)' : 'border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;' ?>   "
                                 id="input-email" name="email">
-                            <?php if( !empty($error['email']) ): ?><p class="error_msg bold txt_left font_75"
-                                style="margin: 0; padding-top: 5px;">
+                            <?php if( !empty($error['email']) ): ?><p class="error_msg bold txt_left font_75 txt_tpad_05 mg_auto">
                                 <?php echo $error['email']; ?></p>
                             <?php endif; ?>
                         </div>
@@ -844,8 +846,8 @@
                                 placeholder="会社名を入力してください"
                                 value="<?php if( !empty($clean['company_name']) ){ echo $clean['company_name']; } ?>"
                                 style=" <?= !empty($error['company_name']) ? 'border: 2px solid red; border-radius: 4px; outline: none; background-color: rgb(234, 235, 234)' : 'border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;' ?>   ">
-                            <?php if( !empty($error['company_name']) ): ?><p class="error_msg bold txt_left font_75"
-                                style="margin: 0; padding-top: 5px;">
+                            <?php if( !empty($error['company_name']) ): ?><p class="error_msg bold txt_left font_75 txt_tpad_05 mg_auto"
+                                >
                                 <?php echo $error['company_name']; ?></p>
                             <?php endif; ?>
                         </div>
@@ -889,8 +891,7 @@
                             <label class="noto_med <?= !empty($error['your_name']) ? 'red' : 'txt_5th_color'; ?> txt_5th_color font_75 txt_lpad_05">同意する。</label>
                             <?php if( !empty($error['agreement']) ): ?>
                                 <div class="space_05"></div>
-                            <p class="error_msg bold txt_left font_75 width_100"
-                                style="margin: 0; padding-top: 5px;">
+                            <p class="error_msg bold txt_left font_75 txt_tpad_05 mg_auto width_100">
                                 <?php echo $error['agreement']; ?></p>
                             <?php endif; ?>
                         </div>
