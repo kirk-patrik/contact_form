@@ -624,12 +624,22 @@
         }
     }
 
+    input[type="checkbox"] {
+        width: 1.2vw !important;
+        height: 1.2vw !important;
+    }
+
     @media (max-width:1050px) {
         input[type="checkbox"] {
-            width: 20px !important;
-            height: 20px !important;
-            margin-top: 2px;
-            margin-right: 8px;
+            width: 2vw !important;
+            height: 2vw !important;
+        }
+    }
+
+    @media (max-width:770px) {
+        input[type="checkbox"] {
+            width: 3vw !important;
+            height: 3vw !important;
         }
     }
     </style>
@@ -661,32 +671,32 @@
                         <label class="font_75 noto_bold txt_5th_color">複数選択（チェックボックス）<span
                                 class="red bold">*</span></label>
                         <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="無料相談" name="customer_attr" class="validate[required]"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
-                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "無料相談" ){ echo 'checked'; } ?>>
+                            <input type="checkbox" value="無料相談" name="customer_attr[]" class="validate[required]"
+                                style="cursor: pointer; opacity: .6"
+                                <?php if( !empty($_POST['customer_attr'][0]) && $_POST['customer_attr'][0] === "無料相談" ){ echo 'checked'; } ?>>
 
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">無料相談</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="資料請求" name="customer_attr" class="validate[required]"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
-                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "資料請求" ){ echo 'checked'; } ?>>
+                            <input type="checkbox" value="資料請求" name="customer_attr[]" class="validate[required]"
+                                style="cursor: pointer; opacity: .6"
+                                <?php if( !empty($_POST['customer_attr'][1]) && $_POST['customer_attr'][1] === "資料請求" ){ echo 'checked'; } ?>>
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">資料請求</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="オンラインにてデモをご希望" name="customer_attr" class="validate[required]"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
-                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "オンラインにてデモをご希望" ){ echo 'checked'; } ?>>
+                            <input type="checkbox" value="オンラインにてデモをご希望" name="customer_attr[]" class="validate[required]"
+                                style="cursor: pointer; opacity: .6"
+                                <?php if( !empty($_POST['customer_attr'][2]) && $_POST['customer_attr'][2] === "オンラインにてデモをご希望" ){ echo 'checked'; } ?>>
                             <label class="noto_regular txt_5th_color font_75 txt_lpad_05">オンラインにてデモをご希望</label>
                         </div>
 
                         <div class="txt_tpad_1 flex" style="align-items: center; justify-content: flex-start;">
-                            <input type="checkbox" value="その他　※詳細はお問い合わせ内容欄に入力をお願いします。" name="customer_attr"
+                            <input type="checkbox" value="その他　※詳細はお問い合わせ内容欄に入力をお願いします。" name="customer_attr[]"
                                 class="validate[required]"
-                                style="cursor: pointer; width:14px; height: 14px; opacity: .6"
-                                <?php if( !empty($clean['customer_attr']) && $clean['customer_attr'] === "その他　※詳細はお問い合わせ内容欄に入力をお願いします。" ){ echo 'checked'; } ?>>
+                                style="cursor: pointer; opacity: .6"
+                                <?php if( !empty($_POST['customer_attr'][3]) && $_POST['customer_attr'][3] === "その他　※詳細はお問い合わせ内容欄に入力をお願いします。" ){ echo 'checked'; } ?>>
                             <label
                                 class="noto_regular txt_5th_color font_75 txt_lpad_05">その他　※詳細はお問い合わせ内容欄に入力をお願いします。</label>
                         </div>
@@ -771,7 +781,7 @@
                             <label class="noto_bold font_75">お問い合せ内容</label>
                             <div class="space_05"></div>
                             <textarea name="contents" id="input-text"
-                                class="validate[required] width_100 txt_tpad_1 txt_lpad_1 txt_bpad_1 txt_rpad_1"
+                                class="validate[required] width_100 font_75 txt_tpad_1 txt_lpad_1 txt_bpad_1 txt_rpad_1"
                                 placeholder="例）電話で詳細を聞きたい" rows="5"
                                 style="border: 1px solid rgba(0,0,0,.15); border-radius: 4px; outline: none;"><?php if( !empty($clean['contents']) ){ echo $clean['contents']; } ?></textarea>
                             <?php if( !empty($error['contents']) ): ?><p class="error_msg bold txt_left font_75"
@@ -785,11 +795,11 @@
                         <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
                             <input type="checkbox" value="同意する。" class="validate[required]" id="agreement"
                                 name="agreement"
-                                style="cursor: pointer; width: 0.9375vw; height: 0.9375vw; opacity: .6;">
+                                style="cursor: pointer;  opacity: .6;">
                             <label class="noto_med txt_5th_color font_75 txt_lpad_05">同意する。</label>
                             <?php if( !empty($error['agreement']) ): ?>
-                            <p class="error_msg bold txt_center"
-                                style="margin: 0; padding-top: 5px; font-size: 0.7rem;">
+                            <p class="error_msg bold txt_left font_75 width_100"
+                                style="margin: 0; padding-top: 5px;">
                                 <?php echo $error['agreement']; ?></p>
                             <?php endif; ?>
                         </div>
@@ -806,7 +816,7 @@
                         <!-- spacing -->
                         <div class="space_2"></div>
                         <div class="txt_center">
-                            <button type="submit" name="btn_confirm" value="内容を送信"
+                            <button type="submit" name="btn_submit" value="内容を送信"
                                 class="custom_hover font_75 txt_tpad_1 txt_bpad_1 white"
                                 style="font-family: arial,helvetica,clean,sans-serif; width: 12vw; border-radius: 13vw; border: none; background-color: #ff9500; cursor: pointer;">内容を送信</button>
                         </div>

@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="">
     <meta property="og:description" content="" />
     <meta property="fb:app_id" content="">
-    <title>Medical-Wi-Fi</title>
+    <title>CONTACT FORM</title>
 
     <!-- Google Tag Manager -->
     <script>
@@ -51,7 +51,7 @@
     <!-- フォントオーサム -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <!-- ファビコン読込 -->
-    <link rel="shortcut icon" href="../img/favicon.ico" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <meta http-equiv="imagetoolbar" content="no">
     <!-- 検索有無設定 -->
     <!-- jquery読込 -->
@@ -72,7 +72,7 @@
     <script type="text/javascript" src="../js/base-color.js"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
-    <script type="text/javascript" src="../js/jquery.easeScroll.js"></script>
+    <script type="text/javascript" src="js/jquery.easeScroll.js"></script>
 
     <!-- バリデーション読込 -->
     <link rel="stylesheet" href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css"
@@ -103,9 +103,40 @@
     });
     </script>
 
-    <style id='base_val' type='text/css'></style>
+    <script>
+    (function(d) {
+        var config = {
+                kitId: 'wjv0unh',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement,
+            t = setTimeout(function() {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout),
+            tk = d.createElement("script"),
+            f = false,
+            s = d.getElementsByTagName("script")[0],
+            a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function() {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+    </script>
 
-    <style type='text/css'>
+    <style id="base_val" type="text/css"></style>
+
+    <style type="text/css">
     table {
         margin: auto;
     }
@@ -293,34 +324,12 @@
     }
     </style>
 
-    <style type='text/css'>
-    @font-face {
-        font-family: 'noto_demilight';
-        src: url(assets/css/fonts/NotoSansCJKjp-DemiLight.otf);
-        font-style: normal;
-    }
 
-    @font-face {
-        font-family: 'noto_regular';
-        src: url(assets/css/fonts/NotoSansCJKjp-Regular.otf);
-        font-style: normal;
-    }
 
+    <style type="text/css">
     @font-face {
-        font-family: 'noto_bold';
-        src: url(assets/css/fonts/NotoSansJP-Bold.otf);
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'noto_light';
-        src: url(assets/css/fonts/NotoSansJP-Light.otf);
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'noto_medium';
-        src: url(assets/css/fonts/NotoSansJP-Medium.otf);
+        font-family: 'helvetica_black';
+        src: url(assets/fonts/helvetica-neue-condensed-black.ttf);
         font-style: normal;
     }
 
@@ -330,24 +339,48 @@
         font-style: normal;
     }
 
-    .noto_demilight {
-        font-family: 'noto_demilight';
-    }
-
-    .noto_regular {
-        font-family: 'noto_regular';
+    .hans_bold {
+        font-family: source-han-sans-japanese, sans-serif;
+        font-weight: 700;
     }
 
     .noto_bold {
-        font-family: 'noto_bold';
+        font-family: noto-sans-cjk-jp, sans-serif;
+        font-weight: 700;
     }
 
-    .noto_light {
-        font-family: 'noto_light';
+    .noto_med {
+        font-family: noto-sans-cjk-jp, sans-serif;
+        font-weight: 500;
     }
 
-    .noto_medium {
-        font-family: 'noto_medium';
+    .noto_black {
+        font-family: noto-sans-cjk-jp, sans-serif;
+        font-weight: 900;
+    }
+
+    .noto_regular {
+        font-family: noto-sans-cjk-jp, sans-serif;
+        font-weight: 400;
+    }
+
+    .noto_demi {
+        font-family: noto-sans-cjk-jp, sans-serif;
+        font-weight: 300;
+    }
+
+    .dnp_regular {
+        font-family: dnp-shuei-mgothic-std, sans-serif;
+        font-weight: 400;
+    }
+
+    .dnp_bold {
+        font-family: dnp-shuei-mgothic-std, sans-serif;
+        font-weight: 600;
+    }
+
+    .helvetica_black {
+        font-family: 'helvetica_black';
     }
 
     .co_regular {
@@ -374,30 +407,6 @@
         padding: 0;
     }
 
-    .txt_pd_l_foot {
-        padding-left: 1.1vw;
-    }
-
-    .txt_deco {
-        text-decoration: none;
-    }
-
-    .bg_wht_grey {
-        background-color: #f5f5f5;
-    }
-
-    .u_line_d_grey {
-        border-bottom: solid 1px #475160;
-    }
-
-    .u_line_top_d_grey {
-        border-top: solid 1px #475160;
-    }
-
-    .u_line_right_d_grey {
-        border-right: solid 2px #475160;
-    }
-
     .undrag {
         user-drag: none;
         user-select: none;
@@ -407,723 +416,423 @@
         -ms-user-select: none;
     }
 
-    .txt_main_color {
-        color: #3a3327;
+    .txt_prime_color {
+        color: #363A90;
     }
 
-    .txt_main_color_2 {
-        color: #0c2e9f;
+    .txt_1st_color {
+        color: #00AFDD;
     }
+
+    .txt_2nd_color {
+        color: #2EB5E6;
+    }
+
+    .txt_3rd_color {
+        color: #E660E3;
+    }
+
+    .txt_3rd_color {
+        color: #666666;
+    }
+
+    .txt_4th_color {
+        color: #333333;
+    }
+
+    .txt_5th_color {
+        color: #2E3231;
+    }
+
+    .txt_6th_color {}
+
+    .txt_7th_color {}
+
+    .txt_8th_color {}
+
+    /* custom style */
+
+    .custom_hover:hover {
+        opacity: .75;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+        border: 1px solid #0000EE !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        opacity: .6;
+    }
+
+    /* end custom style */
 
     .relative {
         position: relative;
     }
-    </style>
 
-    <!-- CUSTOM STYLE -->
-    <style>
-    table {
-        width: 100%;
-    }
+    /* SLIDER CUSTOM CSS */
 
-    th {
-        background: #0C2E9F;
-        color: #fff;
-        /* padding: 24px 70px; */
-    }
-
-
-    td {
-        background: #F5F5F5;
-        /* padding: 10px 30px; */
-        color: #0c2e9f;
-    }
-
-    .row-1 {
-        background: none;
-        padding: 0;
-        width: 40%;
-    }
-
-    .row-2 {
-        background: none;
-        color: #3a3327;
-        padding: 0;
-    }
-
-    tr:not(:last-child) {
-        border-bottom: 1px solid #3a3327;
+    .slider_cont_113 .slick-prev,
+    .slider_cont_113 .slick-next,
+    .slider_cont_113 .slick-prev:hover,
+    .slider_cont_113 .slick-next:hover {
+        width: 10vw;
+        height: 18vw;
+        background: #0000005e;
+        display: none !important;
     }
 
 
-
-    .accordion-container {
-        position: relative;
-        background: #fff;
-    }
-
-    .accordion-container>h2 {
-        text-align: center;
-        color: #fff;
-        padding-bottom: 5px;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .accordion_item>a {
-        position: relative;
-        width: 100%;
-        height: auto;
-        color: #0C2E9F;
-    }
-
-    .accordion_item>a i {
+    .accordion_item .accordion_header::after {
+        content: "\f107";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
         float: right;
-        margin-top: 2px;
+        font-size: 25px;
+        color: #005bac;
     }
 
-    .accordion_item>a.active {
-        background-color: #0C2E9F;
-        color: #fff;
+    .accordion_header.flex.flex_center.active::after {
+        content: "\f106";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+        font-size: 25px;
+        color: #005bac;
     }
 
-    .content {
-        background-color: #fff;
+    .accordion_content {
         display: none;
-
+        overflow: hidden;
     }
 
-    .content p {
-        margin: 0;
-    }
-
-    .fa-plus:before {
-        content: "\f067";
-        color: #0C2E9F;
-    }
-
-    .fa-minus:before {
-        color: #fff;
-    }
-
-    /* Input */
-    input[type='radio'] {
-        -webkit-appearance: none;
-        width: 1vw;
-        height: 1vw;
-        border-radius: 50%;
-        outline: none;
-        border: 2px solid #0b2d9f;
-    }
-
-    input[type='radio']:before {
-        content: '';
-        display: block;
-        width: 60%;
-        height: 60%;
-        margin: 20% auto;
-        border-radius: 50%;
-    }
-
-    input[type='radio']:checked:before {
-        background: #0b2d9f;
-    }
-
-    /* Input End*/
-
-    .form-btn-wrap {
-        position: relative;
-        display: block;
-        width: 100%;
-        background-color: #0b2d9f;
-        box-shadow: 0px 8px #021969;
-    }
-
-    .form-btn-wrap input[type="submit"] {
-        background: none;
-    }
-
-    .form-btn-wrap::after {
-        content: '▶';
-        color: #FFFFFF;
-        position: absolute;
-        top: 35%;
-        right: 11%;
-    }
-
-    .required_span {
-        top: -.5vw;
-    }
-
-    @media only screen and (max-width: 1050px) {
-        /* .ml-30 {
-            margin-left: 30vw;
-        } */
-
-        .required_span {
-            top: -2vw;
+    @media only screen and (max-width: 600px) {
+        .accordion_content {
+            display: none;
+            overflow: hidden;
         }
 
-        input[type='radio'] {
-            -webkit-appearance: none;
-            width: 17px;
-            height: 17px;
-            border-radius: 50%;
-            outline: none;
-            border: 2px solid #0b2d9f;
+        .slider_cont_135 .slick-list {
+            margin-left: 2vw;
+        }
+    }
+
+
+
+    .slider_cont_135 .slick-list {
+        margin-left: 0.3vw !important;
+    }
+
+    .slider_cont_135 .slick-prev {
+        background: transparent !important;
+        opacity: 1 !important;
+        left: -4% !important;
+    }
+
+    .slider_cont_135 .slick-next {
+        background: transparent !important;
+        opacity: 1 !important;
+        right: -10px !important;
+    }
+
+    .slider_cont_135 .slick-prev:before {
+        font-size: 2vw !important;
+        margin-left: 0.2vw;
+
+    }
+
+    .slider_cont_135 .slick-next:before {
+        font-size: 2vw !important;
+    }
+
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: #000581 !important;
+
+    }
+
+    @media only screen and (max-width: 770px) {
+        .slider_cont_135 .slick-prev:before {
+            font-size: 27px !important;
+            opacity: 1 !important;
+            position: absolute !important;
+            left: 0;
+            width: 100%;
+            transform: translate(0%, -50%);
+        }
+    }
+
+
+    @media only screen and (max-width: 770px) {
+        .slider_cont_135 .slick-next:before {
+            font-size: 27px !important;
+            opacity: 1 !important;
+            position: absolute !important;
+            right: 0;
+            width: 100%;
+            transform: translate(0%, -50%);
+        }
+    }
+
+    @media only screen and (max-width: 1440px) {
+        .slider_cont_135 .slick-next {
+            width: 4% !important;
+            right: -3% !important;
+        }
+
+        .slider_cont_135 .slick-prev {
+            background: transparent !important;
+            opacity: 1 !important;
+            left: -5% !important;
+            width: 5%;
+        }
+    }
+
+
+    @media only screen and (max-width: 470px) {
+        .slider_cont_135 .slick-prev:before {
+            left: 0vw;
+        }
+
+        .slider_cont_135 .slick-list {
+            margin-left: 2vw !important;
+        }
+    }
+
+    @media only screen and (max-width: 371px) {
+        .slider_cont_135 .slick-prev:before {
+            left: -2vw;
+        }
+
+        .slider_cont_135 .slick-list {
+            margin-left: 2vw !important;
+        }
+
+        .slider_cont_135 .slick-next:before {
+            right: 0vw;
+        }
+    }
+
+    /* custom medai query */
+    @media (max-width:1050px) {
+        button {
+            width: 38vw !important;
+            padding: 20vw 0 !important;
+        }
+    }
+
+    input[type="checkbox"] {
+        width: 1.2vw !important;
+        height: 1.2vw !important;
+    }
+
+    @media (max-width:1050px) {
+        input[type="checkbox"] {
+            width: 2vw !important;
+            height: 2vw !important;
+        }
+    }
+
+    @media (max-width:770px) {
+        input[type="checkbox"] {
+            width: 3vw !important;
+            height: 3vw !important;
         }
     }
     </style>
+
     <link rel="stylesheet" href="css/sp.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <!-- PC -->
-        <div class="view_pc">
-            <div class="width_100 relative txt_tpad_1 txt_bpad_1 bspace_05">
-                <div class="cont_wrapper_65">
-                    <div class="width_22 txt_bpad_05">
-                        <a href="index.html" class="" style="display: block;">
-                            <div class="width_100 mg_auto">
-                                <img src="img/main_logo.png" alt="Medical-Wi-Fi" class="fix_zoom undrag">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="width_100">
-                        <div class="width_100 flex flex_center" style="justify-content: space-between;">
-                            <div class="flex flex_center">
-                                <a href="..#活用ケース" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        活用ケース
-                                    </p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#当社の強み" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        当社の強み </p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#導入イメージ" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        導入イメージ</p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#料金" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        料金 </p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#導入事例" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        導入事例 </p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#よくある質問" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        よくある質問</p>
-                                </a>
-                            </div>
-
-                            <div class="flex flex_center">
-                                <a href="..#補助金概要" style="display: block;">
-                                    <p class="noto_regular txt_mg_0 font_75 txt_tpad_05 txt_bpad_05">
-                                        補助金概要</p>
-                                </a>
-                            </div>
-
-                            <div class="width_22">
-                                <a href="contact-form.php" class="square_btn" style="display: block;">
-                                    <p class="noto_bold txt_mg_0 font_75 txt_tpad_05 txt_bpad_05 box_radius_10 flex flex_center"
-                                        style="border: 4px solid #ff6900; color: #ff6900; justify-content: center;">
-                                        <img class="txt_rpad_05 width_10" src="img/contact_icon.png">お問い合わせ
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MOBILE -->
-        <div class="view_tabsp fixed_top" style=" z-index: 1000000;">
-            <div class="bg_white">
-                <div class="cont_wrapper_65 flex flex_center txt_tpad_2 txt_bpad_2">
-                    <div class="width_50 mg_auto flex flex_center">
-                        <a href="index.html" class="width_95 mg_auto">
-                            <img class="fix_zoom" src="img/main_logo.png" alt="Medical-Wi-Fi">
-                        </a>
-                    </div>
-                    <div class="width_10">
-                    </div>
-
-                    <div class="width_28">
-                    </div>
-
-                    <!-- Hamburger Menu -->
-                    <div class="width_10 mg_auto">
-
-                        <div class="width_100 relative txt_center button_container block flex flex_center" id="toggle"
-                            style=" z-index:152;">
-                            <span class="top width_100 mg_auto"></span>
-                            <span class="middle width_100 mg_auto"></span>
-                            <span class="bottom width_100 mg_auto"></span>
-                            <div class="nav_menu"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Overlay Menu Open -->
-            <div class="overlay" id="overlay" style="z-index:150; overflow-y: scroll; height: 100vh !important;">
-                <nav class="overlay-menu">
-                    <ul class="width_100 mg_auto flex flex_center">
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#活用ケース"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">活用ケース</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#当社の強み"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">当社の強み</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center bold"
-                                onclick="close_menu();" href="..#導入イメージ"><span class="font_125 white noto_medium"
-                                    style="letter-spacing: 10px;">導入イメージ</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#料金"><span class="font_125 white noto_medium"
-                                    style="letter-spacing: 10px;">料金</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#導入事例"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">導入事例</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#よくある質問"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">よくある質問</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="..#補助金概要"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">補助金概要</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                        <li class="width_100 mg_auto" style="border-bottom: 2px solid #CCCCCC;">
-                            <div class="space_1"></div>
-                            <a class="width_95 mg_auto font_100 txt_tpad_1 txt_bpad_1 block txt_center"
-                                onclick="close_menu();" href="contact-form.php"><span class="noto_medium font_125 white"
-                                    style="letter-spacing: 10px;">お問い合わせ</span></a>
-                            <div class="space_1"></div>
-                        </li>
-                    </ul>
-
-                </nav>
-            </div>
-
-        </div>
-    </header>
-
     <main>
-
-        <!-- Section 1 -->
-        <section class="sect_1">
+        <!-- CONTACT FORM -->
+        <section class="contact_form">
             <div class="">
-                <div class="wrapper_100 box_radius_15" style="background-color: #f5f5f5;">
-                    <!-- Spacing -->
-                    <div class="space_5 view_pc"></div>
-                    <div class="space_3 view_tabsp"></div>
-                    <div class="space_10 view_tabsp"></div>
-                    <p class="noto_regular font_150 wrapper_65 txt_bpad_05 view_pc"
-                        style="border-bottom: 2px solid #0c2e9f;">
-                        導入に関するお問い合わせ
-                    </p>
-                    <p class="noto_regular font_125 wrapper_65 txt_bpad_05 view_tabsp"
-                        style="border-bottom: 2px solid #0c2e9f;">
-                        導入に関するお問い合わせ
-                    </p>
-                    <p class="noto_bold font_125">Contact</p>
-                    <!-- Spacing -->
-                    <div class="space_5"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2 -->
-        <section class="sect_2">
-            <!-- Spacing -->
-            <div class="space_5"></div>
-            <div class="cont_wrapper_65">
-                <p class="noto_demilight font_100">必要事項をご記入の上、「ご確認する」ボタンを押してください。<br>
-                    <span class="noto_demilight font_100 red">※印は必須入力項目です。</span>
-                </p>
-                <!-- Spacing -->
-                <div class="space_3"></div>
-                <!-- View PC -->
-                <div class="view_pc">
-                    <!-- 1 -->
-                    <div class="flex flex_center">
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style=" justify-content: start; border: 1px solid #0b2d9f;">
-                            <span class="noto_demilight white font_100 txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05"
-                                style="background-color: #0b2d9f;">1</span><span
-                                class="noto_demilight font_100 txt_lpad_1" style="color: #0c2e9f;">内容入力 </span>
-                        </p>
-                        <!-- Arrow -->
-                        <div class="width_2">
-                            <img class="fix_zoom" src="img/contact_form/flow_arrow.png" alt="">
+                <div style="background-color: #33b9bb;">
+                    <div class="wrapper_60 txt_tpad_2">
+                        <div class="bg_img">
+                            <img src="img/logo.png" alt="" class="fix_zoom"
+                                style="width: 27% !important; margin: 0 auto !important;">
                         </div>
-                        <!-- 2 -->
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style="background-color: #0b2d9f; justify-content: start;">
-                            <span class="noto_demilight font_100 bg_white txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05"
-                                style="color: #0c2e9f;">2</span><span
-                                class="white noto_demilight font_100 txt_lpad_1">内容確認</span>
-                        </p>
-
-                        <!-- Arrow -->
-                        <div class="width_2">
-                            <img class="fix_zoom" src="img/contact_form/flow_arrow.png" alt="">
-                        </div>
-                        <!-- 3 -->
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style=" justify-content: start; border: 1px solid #0b2d9f;">
-                            <span class="noto_demilight white font_100 txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05"
-                                style="background-color: #0b2d9f;">3</span><span
-                                class="noto_demilight font_100 txt_lpad_1" style="color: #0c2e9f;">完了</span>
-                        </p>
+                        <p class="white font_125 noto_bold txt_center txt_tpad_05">無料相談・資料請求</p>
+                        <div class="space_1"></div>
+                        <div class="space_05"></div>
                     </div>
                 </div>
-                <!-- View SP -->
-                <div class="view_tabsp">
-                    <div class="flex flex_center">
-                        <!-- 1 -->
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style=" justify-content: start; border: 1px solid #0b2d9f;">
-                            <span
-                                class="noto_demilight white font_100 txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05 mg_auto"
-                                style="background-color: #0b2d9f;">1</span><span class="noto_demilight font_100 mg_auto"
-                                style="color: #0c2e9f;">内容入力</span>
-                        </p>
-                        <!-- Arrow -->
-                        <div class="width_2">
-                            <img class="fix_zoom" src="img/contact_form/flow_arrow.png" alt="">
-                        </div>
-
-                        <!-- 2 -->
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style="background-color: #0b2d9f; justify-content: start;">
-                            <span
-                                class="noto_demilight font_100 bg_white txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05 mg_auto"
-                                style="color: #0c2e9f;">2</span><span
-                                class="white noto_demilight font_100 mg_auto">内容確認</span>
-                        </p>
-                        <!-- Arrow -->
-                        <div class="width_2">
-                            <img class="fix_zoom" src="img/contact_form/flow_arrow.png" alt="">
-                        </div>
-                        <!-- 3 -->
-                        <p class="width_30 txt_tpad_1 txt_bpad_1 flex flex_center txt_lpad_2 txt_rpad_2"
-                            style=" justify-content: start; border: 1px solid #0b2d9f; flex-direction: column;">
-                            <span
-                                class="noto_demilight white font_100 txt_lpad_1 txt_rpad_1 txt_tpad_05 txt_bpad_05 mg_auto"
-                                style="background-color: #0b2d9f;">3</span><span class="noto_demilight font_100 mg_auto"
-                                style="color: #0c2e9f;">完了</span>
-                        </p>
-                    </div>
-                </div>
-                <!-- Spacing -->
                 <div class="space_4"></div>
-                <!-- Title -->
-                <p class="font_200 noto_bold txt_left txt_bpad_1">基本情報</p>
+                <div class="cont_wrapper_50">
+                    <form method="post" action="#form" enctype="multipart/form-data" novalidate
+                        class="txt_left txt_lpad_4 txt_rpad_4">
+                        <label class="font_75 noto_bold txt_5th_color">複数選択（チェックボックス）<span
+                                class="red bold">*</span></label>
+                        <div class="space_05"></div>
+                        <p class="noto_regular font_75"><?php echo $_POST['customer_attr'][0]; ?></p>
+                        <p class="noto_regular font_75"><?php echo $_POST['customer_attr'][1]; ?></p>
+                        <p class="noto_regular font_75"><?php echo $_POST['customer_attr'][2]; ?></p>
+                        <p class="noto_regular font_75"><?php echo $_POST['customer_attr'][3]; ?></p>
+                    
+                        <!-- spacing -->
+                        <div class="space_2"></div>
 
-                <form method="post" action="#form" enctype="multipart/form-data" novalidate>
-                    <div class="wrapper_100" style="background-color: #f5f5f5;">
-                        <!-- Spacing -->
-                        <div class="space_3"></div>
-                        <!-- Radio Button 1 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">お客様属性<span class="font_75 required_span"
-                                            style="position: relative; color: red;">※</span></label>
-                                </li>
-                                <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                    <?php echo $clean['customer_attr']; ?></p>
-                            </ul>
+                        <div>
+                            <label class="noto_bold font_75">お名前 <span class="red bold">*</span></label>
+                            <div class="space_05"></div>
+                            <p class="noto_regular font_75"><?php echo $clean['your_name']; ?></p>
                         </div>
-                        <!-- Input 1 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">会社名<span
-                                            style="font-size: 12px; position: relative; top: -6px; color: red;"></span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['your_name']; ?></p>
-                                </li>
-                            </ul>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <div>
+                            <label class="noto_bold font_75">メールアドレス <span class="red bold">*</span></label>
+                            <div class="space_05"></div>
+                            <p class="noto_regular font_75"><?php echo $clean['email']; ?></p>
                         </div>
-                        <!-- Input 2 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">お名前<span class="font_75 required_span"
-                                            style=" position: relative; color: red;">※</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['email']; ?></p>
-                                </li>
-                            </ul>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <div>
+                            <label class="noto_bold font_75">会社名 <span class="red bold">*</span></label>
+                            <div class="space_05"></div>
+                            <p class="noto_regular font_75"><?php echo $clean['company_name']; ?></p>
                         </div>
-                        <!-- Input 3 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">フリガナ<span class="font_75 required_span"
-                                            style="position: relative; color: red;">※</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['company_name']; ?></p>
-                                </li>
-                            </ul>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <div>
+                            <label class="noto_bold font_75">電話番号</label>
+                            <div class="space_05"></div>
+                            <p class="noto_regular font_75"><?php echo $clean['tel']; ?></p>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <div>
+                            <label class="noto_bold font_75">お問い合せ内容</label>
+                            <div class="space_05"></div>
+                            <p class="noto_regular font_75"><?php echo $clean['contents']; ?></p>
                         </div>
-                        <!-- Input 4 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">電話番号<span class="font_75 required_span"
-                                            style="position: relative; color: red;">※</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['tel']; ?></p>
-                                </li>
-                            </ul>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <p class="font_75 noto_bold">プライバシーポリシー<span class="red"> *</span></p>
+                        <div class="txt_tpad_05 flex" style="align-items: center; justify-content: flex-start;">
+                            <label class="noto_med txt_5th_color font_75">同意する。</label>
                         </div>
-                        <!-- Input 5 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">メールアドレス<span
-                                            class="font_75 required_span"
-                                            style="position: relative;color: red;">※</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['contents']; ?></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Input 6 -->
-                        <!-- <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100 line_h_100">メールアドレス<span
-                                            class="font_75 required_span"
-                                            style="position: relative;color: red;">※</span><br><span
-                                            class="font_75 noto_regular">(確認用)</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['confirm-email']; ?></p>
-                                </li>
-                            </ul>
-                        </div> -->
-                        <!-- Radio Button 2 -->
-                        <!-- <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_2 txt_tpad_2 txt_lpad_1 txt_rpad_1 bspace_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100">お問い合わせ種別<span
-                                            class="font_75 required_span"
-                                            style="position: relative;color: red;">※</span></label>
-                                </li>
-                                <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                    <?php echo $clean['inquiry_type']; ?></p>
-                            </ul>
-                        </div> -->
-                        <!-- TextArea 1 -->
-                        <div class="wrapper_90">
-                            <ul class="flex_1 txt_left txt_bpad_1 txt_lpad_1 txt_rpad_1" style="justify-content: start; align-items:
-                                    start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100 line_h_100">お問い合わせ内容<span
-                                            class="font_75 required_span"
-                                            style="position: relative;color: red;">※</span></label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['contents']; ?></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Spacing -->
-                        <div class="space_3"></div>
-                        <!-- <p class="font_200 noto_bold txt_left txt_bpad_1 wrapper_90 txt_lpad_1">施設情報</p> -->
-                        <!-- Input 7 -->
-                        <!-- <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_tpad_1 txt_lpad_1 txt_rpad_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100 line_h_100">所在地</label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['location']; ?></p>
-                                </li>
-                            </ul>
-                        </div> -->
-                        <!-- Input 8 -->
-                        <!-- <div class="wrapper_90">
-                            <ul class="flex_1 flex_center txt_left txt_bpad_1 txt_tpad_1 txt_lpad_1 txt_rpad_1"
-                                style="justify-content: start;">
-                                <li class="width_23 f_sub">
-                                    <label for="" class="noto_regular font_100 line_h_100">施設名</label>
-                                </li>
-                                <li class="width_77 f_sub">
-                                    <p class="font_100 txt_left black noto_bold line_h_200 txt_mg_0">
-                                        <?php echo $clean['facility']; ?></p>
-                                </li>
-                            </ul>
+                        <!-- spacing -->
+                        <div class="space_2"></div>
+                        <!-- <div class="txt_center">
+                            <input type="submit" name="btn_submit" value="内容を送信"
+                                class="custom_hover font_75 txt_tpad_1 txt_bpad_1 white"
+                                style="font-family: arial,helvetica,clean,sans-serif; width: 12vw; border-radius: 13vw; border: none; background-color: #ff9500; cursor: pointer;">内容を送信</button>
                         </div> -->
 
-                        <input type="hidden" name="customer_attr" value="<?php echo $clean['customer_attr']; ?>">
+                        <input type="hidden" name="customer_attr[]" value="<?php echo $_POST['customer_attr'][0]; ?>">
+                        <input type="hidden" name="customer_attr[]" value="<?php echo $_POST['customer_attr'][1]; ?>">
+                        <input type="hidden" name="customer_attr[]" value="<?php echo $_POST['customer_attr'][2]; ?>">
+                        <input type="hidden" name="customer_attr[]" value="<?php echo $_POST['customer_attr'][3]; ?>">
                         <input type="hidden" name="your_name" value="<?php echo $clean['your_name']; ?>">
                         <input type="hidden" name="email" value="<?php echo $clean['email']; ?>">
                         <input type="hidden" name="company_name" value="<?php echo $clean['company_name']; ?>">
                         <input type="hidden" name="tel" value="<?php echo $clean['tel']; ?>">
                         <input type="hidden" name="contents" value="<?php echo $clean['contents']; ?>">
-                        <input type="hidden" name="agreement" value="<?php echo $clean['agreement']; ?>">
-                        <div class="space_3"></div>
-                    </div>
-                    <div class="space_3"></div>
-                    <div class="view_pc cont_wrapper_85">
-                        <div class="flex">
-                            <div class="width_48">
-                                <input
-                                    class="view_pc width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
-                                    type="submit" name="btn_back" value="入力画面に戻る" style="background-color: #8d8b83;">
-                            </div>
-                            <div class="width_48">
-                                <input
-                                    class="view_pc width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
-                                    type="submit" name="btn_submit" value="送信する" style="background-color: #ff7770;">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="view_tabsp cont_wrapper_75">
-                        <div class="wrapper_95">
-                            <input
-                                class="view_tabsp width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
-                                type="submit" name="btn_back" value="入力画面に戻る" style="background-color: #8d8b83;">
-                        </div>
-                        <div class="space_3"></div>
-                        <div class="wrapper_95">
-                            <input
-                                class="view_tabsp width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
-                                type="submit" name="btn_submit" value="送信する" style="background-color: #ff7770;">
-                        </div>
-                    </div>
-                    <div class="space_5"></div>
-                </form>
 
+                        <div class="view_pc cont_wrapper_85">
+                            <div class="flex">
+                                <div class="width_48">
+                                    <input
+                                        class="view_pc width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
+                                        type="submit" name="btn_back" value="入力画面に戻る" style="background-color: #8d8b83;">
+                                </div>
+                                <div class="width_48">
+                                    <input
+                                        class="view_pc width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
+                                        type="submit" name="btn_submit" value="送信する" style="background-color: #ff9500;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view_tabsp cont_wrapper_85 txt_tpad_3">
+                            <div class="flex">
+                                <div class="width_100">
+                                    <input
+                                        class="width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
+                                        type="submit" name="btn_submit" value="送信する" style="background-color: #ff9500;">
+                                </div>
+                                <div class="space_1"></div>
+                                <div class="width_100">
+                                    <input
+                                        class="width_100 square_btn white line_h_350 font_100 noto_bold box_radius_9999"
+                                        type="submit" name="btn_back" value="入力画面に戻る" style="background-color: #8d8b83;">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="space_5"></div>
+                </div>
             </div>
+
+            <!-- TAB AND SP VIEW -->
+
+
         </section>
 
-    </main>
+        <script>
+        $("html").easeScroll();
 
-    <footer>
-        <div class="">
-            <div class="wrapper_100">
-                <p class="noto_demilight font_75 txt_center white txt_bpad_05 txt_tpad_05"
-                    style="background-color: #0b2d9f;">
-                    <a href="https://www.fibergate.co.jp/" target="_blank"
-                        class="noto_demilight font_75 txt_center white">
-                        Copyright (C) 2021 Fibergate Inc. all rights reserved.</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-    <script>
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
-                location
-                .hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
+        // Navigation
+        $('#toggle').click(function() {
+            $(this).toggleClass('active');
+            $('#overlay').toggleClass('open');
         });
-    });
-    </script>
+        </script>
 
-    <script>
-    $("html").easeScroll();
-    </script>
+        <script>
+        (function(d) {
+            var config = {
+                    kitId: 'lbs3xkk',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+        </script>
 
-    <script>
-    $("html").easeScroll();
-    // Navigation
-    $('#toggle').click(function() {
-        $(this).toggleClass('active');
-        $('#overlay').toggleClass('open');
-    });
 
-    function close_menu() {
-        $('#toggle').toggleClass('active');
-        $('#overlay').toggleClass('open');
-    }
-    </script>
+        <!-- ACCORDION  -->
+        <script>
+        var acc = document.getElementsByClassName("accordion_header");
+        var i;
 
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var accordion_content = this.nextElementSibling;
+                if (accordion_content.style.display === "flex") {
+                    accordion_content.style.display = "none";
+                } else {
+                    accordion_content.style.display = "flex";
+                }
+            });
+        }
+        </script>
 </body>
 
 </html>
