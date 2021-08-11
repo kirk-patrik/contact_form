@@ -92,6 +92,7 @@ if( !empty($clean['btn_confirm'])) {
 			$auto_reply_text .= "会社名: " . $clean['company_name'] . "\n";	
 			$auto_reply_text .= "電話番号: " . $clean['tel'] . "\n";
 			$auto_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
+			$auto_reply_text .= "プライバシーポリシー: 同意済み\n";
 			$auto_reply_text .= "---------------------------- \n";
 			$auto_reply_text .= "■本メールは送信専用メールです。\n";
 			$auto_reply_text .= "ご返信頂いてもお答えできませんのでご了承ください。\n";
