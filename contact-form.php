@@ -73,8 +73,8 @@ if( !empty($clean['btn_confirm'])) {
 		
 			$header = "MIME-Version: 1.0\n";
 			$header = "Content-Type: multipart/mixed;boundary=\"__BOUNDARY__\"\n";
-			$header .= "From: markariel.maata@bpoc.co.jp\n";
-			$header .= "Reply-To: markariel.maata@bpoc.co.jp\n";
+			$header .= "From: hipetest@bpoc.co.jp\n";
+			$header .= "Reply-To: hipetest@bpoc.co.jp\n";
 		
 			// 件名を設定
 			$auto_reply_subject = 'お問い合わせいただきありがとうございます。｜Locaop';
@@ -175,18 +175,18 @@ function validation($data) {
 	}
 
 	// 電話番号のバリデーション
-	if( empty($data['tel']) ) {
-		$error['tel'] = "「電話番号」は入力必須項目です。";
-	} elseif( !preg_match( '/^[0-9]+[0-9.-]+$/', $data['tel']) ) {
-		$error['tel'] = "正しい形式で入力してください。";
-	}
+	// if( empty($data['tel']) ) {
+	// 	$error['tel'] = "「電話番号」は入力必須項目です。";
+	// } elseif( !preg_match( '/^[0-9]+[0-9.-]+$/', $data['tel']) ) {
+	// 	$error['tel'] = "正しい形式で入力してください。";
+	// }
 
 	// 氏名のバリデーション
-	if( empty($data['contents']) ) {
-		$error['contents'] = "「お問い合わせ内容」は入力必須項目です。";
-	} elseif( 300 < mb_strlen($data['contents']) ) {
-		$error['contents'] = "20文字以内で入力してください。";
-	}
+	// if( empty($data['contents']) ) {
+	// 	$error['contents'] = "「お問い合わせ内容」は入力必須項目です。";
+	// } elseif( 300 < mb_strlen($data['contents']) ) {
+	// 	$error['contents'] = "20文字以内で入力してください。";
+	// }
 
 	if( empty($data['agreement']) ) {
 		$error['agreement'] = "「個人情報の取り扱いについて」に同意します は入力必須項目です。 ";
