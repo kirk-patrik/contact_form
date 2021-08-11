@@ -39,14 +39,14 @@
     <![endif]-->
     <!-- CSS読込 -->
     <!-- <link rel="stylesheet" href="assets/css/normalize.css"> -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/pagetop.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pagetop.css">
     <link href="js/slick.css" rel="stylesheet" type="text/css">
     <link href="js/slick-theme.css" rel="stylesheet" type="text/css">
     <!-- Base CSS -->
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="css/base.css">
 
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- フォントオーサム -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -66,18 +66,18 @@
             });
         } catch (e) {}
     </script>
-    <script type="text/javascript" src="../js/slick.min.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
-    <script type="text/javascript" src="../js/modal.js"></script>
-    <script type="text/javascript" src="../js/base-color.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/base-color.js"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
     <script type="text/javascript" src="js/jquery.easeScroll.js"></script>
 
     <!-- バリデーション読込 -->
-    <link rel="stylesheet" href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css" type="text/css" />
-    <script src="../js/jQuery-Validation-Engine-master/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css" type="text/css" />
+    <script src="js/jQuery-Validation-Engine-master/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
     <script>
         $(function() {
             jQuery("#form form").validationEngine();
@@ -727,10 +727,10 @@
                     <div class="wrapper_60 txt_tpad_2 txt_bpad_1">
                         <div class="bg_img">
                             <div class="view_pc">
-                                <img src="../img/logo.png" alt="" class="fix_zoom" style="width: 27% !important; margin: 0 auto !important;">
+                                <img src="img/logo.png" alt="" class="fix_zoom" style="width: 27% !important; margin: 0 auto !important;">
                             </div>
                             <div class="view_tabsp txt_tpad_1 sp_logo">
-                                <img src="../img/logo.png" alt="" class="fix_zoom" style="width: 67% !important; margin: 0 auto !important;">
+                                <img src="img/logo.png" alt="" class="fix_zoom" style="width: 67% !important; margin: 0 auto !important;">
                             </div>
                         </div>
                         <p class="white font_125 noto_bold txt_center txt_tpad_05 heading-text">無料相談・資料請求</p>

@@ -73,8 +73,8 @@ if( !empty($clean['btn_confirm'])) {
 		
 			$header = "MIME-Version: 1.0\n";
 			$header = "Content-Type: multipart/mixed;boundary=\"__BOUNDARY__\"\n";
-			$header .= "From: hipetest@bpoc.co.jp\n";
-			$header .= "Reply-To: hipetest@bpoc.co.jp\n";
+			$header .= "From: cs@adlive.asia\n";
+			$header .= "Reply-To: cs@adlive.asia\n";
 		
 			// 件名を設定
 			$auto_reply_subject = 'お問い合わせいただきありがとうございます。｜Locaop';
@@ -139,7 +139,7 @@ if( !empty($clean['btn_confirm'])) {
 			$body .= "--__BOUNDARY__\n";
 		
 			// 管理者へメール送信
-			mb_send_mail('markariel.maata@bpoc.co.jp', $admin_reply_subject, $body, $header);
+			mb_send_mail('cs@adlive.asia', $admin_reply_subject, $body, $header);
 		} else {
 			$page_flag = 0;
 		}
