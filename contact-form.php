@@ -128,6 +128,7 @@ if( !empty($clean['btn_confirm'])) {
 			$admin_reply_text .= "会社名: " . $clean['company_name'] . "\n";
 			$admin_reply_text .= "電話番号: " . $clean['tel'] . "\n";
 			$admin_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
+			$admin_reply_text .= "プライバシーポリシー: 同意済み\n";
 			$admin_reply_text .= "---------------------------- \n\n";
 			$admin_reply_text .= "送信された日時: " . date("Y/m/d D H:i") . "\n";
 			
