@@ -1,5 +1,18 @@
 <?php
 
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // 変数の初期化
 $clean = array();
@@ -17,14 +30,8 @@ $clean['tel'] = mb_convert_kana($clean['tel'], "n");
 $clean['email'] = str_replace(array(" ", "　"), "", $clean['email']);
 $clean['email'] = mb_convert_kana($clean['email'], "askhc");
 
-// if(!empty($clean['proceed'])){
-// 	$page_flag = 1;
-// 	// セッションの書き込み
-// 	session_start();
-// 	$_SESSION['page'] = true;	
-// }
 
-if( !empty($clean['btn_confirm'])) {
+if( !empty($clean['btn_submit'])) {
 	$error = validation($clean);
 
 	if( empty($error) ) {
@@ -32,27 +39,8 @@ if( !empty($clean['btn_confirm'])) {
 		$page_flag = 1;
 		// セッションの書き込み
 		session_start();
-		$_SESSION['page'] = true;		
-	}
-
-}
-// elseif(!empty($clean['btn_back'])){
-// 	session_start();
-// 	$page_flag = 1;
-// }
- elseif( !empty($clean['btn_submit']) ) {
-
-	$error = validation($clean);
-
-	if( empty($error) ) {
-
-		$page_flag = 2;
-		// セッションの書き込み
-		session_start();
-		$_SESSION['page'] = true;
+		$_SESSION['page'] = true;	
 		
-
-		session_start();
 		if( !empty($_SESSION['page']) && $_SESSION['page'] === true ) {
 			// セッションの削除
 			unset($_SESSION['page']);
@@ -66,20 +54,14 @@ if( !empty($clean['btn_confirm'])) {
 			$admin_reply_subject = null;
 			$admin_reply_text = null;
 			date_default_timezone_set('Asia/Tokyo');
-			
-			//日本語の使用宣言
+		
+			// //日本語の使用宣言
 			mb_language("ja");
 			mb_internal_encoding("UTF-8");
 		
-			$header = "MIME-Version: 1.0\n";
-			$header = "Content-Type: multipart/mixed;boundary=\"__BOUNDARY__\"\n";
-			$header .= "From: cs@adlive.asia\n";
-			$header .= "Reply-To: cs@adlive.asia\n";
-		
-			// 件名を設定
+			// // 件名を設定
 			$auto_reply_subject = 'お問い合わせいただきありがとうございます。｜Locaop';
-
-			// 本文を設定
+			// // 本文を設定
 			$auto_reply_text .=  $clean['your_name'] . "様\n\n";
 			$auto_reply_text .= "この度は、お問い合わせ頂きありがとうございます。\n";
 			$auto_reply_text .= "以下の通りに承りました。\n";
@@ -105,21 +87,11 @@ if( !empty($clean['btn_confirm'])) {
 			$auto_reply_text .= "ADlive株式会社\n";
 			$auto_reply_text .= "カスタマーサクセス事業部\n";
 			$auto_reply_text .= "──────────────────── \n";
-			
-			// テキストメッセージをセット
-			$body = "--__BOUNDARY__\n";
-			$body .= "Content-Type: text/plain; charset=\"ISO-2022-JP\"\n\n";
-			$body .= $auto_reply_text . "\n";
-			$body .= "--__BOUNDARY__\n";
-		
-			// 自動返信メール送信
-			mb_send_mail( $clean['email'], $auto_reply_subject, $body, $header);
-		
+			$autobody .= $auto_reply_text . "\n";
 
-			// 運営側へ送るメールの件名
+			// // 運営側へ送るメールの件名
 			$admin_reply_subject = "LocaopLPよりお問い合わせがありました。";
-		
-			// 本文を設定;
+			// // 本文を設定;
 			$admin_reply_text .= "LocaopLPより、問い合わせがありました。\n 送信内容は以下です。\n\n";
 			$admin_reply_text .= "-----以下送信内容--------\n";
 			$admin_reply_text .= "お問い合わせ内容: " . $_POST['customer_attr'][0] . " - " . $_POST['customer_attr'][1] . " - " . $_POST['customer_attr'][2] . " - " . $_POST['customer_attr'][3] . "\n";
@@ -131,23 +103,53 @@ if( !empty($clean['btn_confirm'])) {
 			$admin_reply_text .= "プライバシーポリシー: 同意済み\n";
 			$admin_reply_text .= "---------------------------- \n\n";
 			$admin_reply_text .= "送信された日時: " . date("Y/m/d D H:i") . "\n";
+			$adminbody .= $admin_reply_text . "\n";
+
+
+			try {
+				//Server settings
+				$mail->SMTPDebug = 0;                      					//Enable verbose debug output
+				$mail->isSMTP();                                            //Send using SMTP
+				$mail->Host       = 'smtp.gmail.com';                     	//Set the SMTP server to send through
+				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+				$mail->Username   = 'markariel.maata@bpoc.co.jp';           //SMTP username
+				$mail->Password   = 'hipe1108';                             //SMTP password
+				$mail->SMTPSecure = "ssl";            						//Enable implicit TLS encryption
+				$mail->Port       = 465;     								//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+				$mail->CharSet = 'ISO-2022-JP';                               
 			
-			// テキストメッセージをセット
-			$body = "--__BOUNDARY__\n";
-			$body .= "Content-Type: text/plain; charset=\"ISO-2022-JP\"\n\n";
-			$body .= $admin_reply_text . "\n";
-			$body .= "--__BOUNDARY__\n";
-		
-			// 管理者へメール送信
-			mb_send_mail('cs@adlive.asia', $admin_reply_subject, $body, $header);
+				//Recipients
+				$mail->setFrom('markariel.maata@bpoc.co.jp', '');
+				$mail->addReplyTo('markariel.maata@bpoc.co.jp', '');
+			
+				//Content
+				$mail->addAddress($clean['email']);     //Add a recipient
+				$mail->isHTML(false);            
+				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
+				$mail->Subject =mb_encode_mimeheader($auto_reply_subject, "ISO-2022-JP-MS");
+				$mail->Body    = $autobody;
+				$mail->send();
+
+				$mail->ClearAllRecipients();
+
+				//Content
+				$mail->addAddress('markariel.maata@bpoc.co.jp');     		//Add a recipient
+				$mail->isHTML(false);            
+				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
+				$mail->Subject =mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
+				$mail->Body    = $adminbody;
+				$mail->send();
+
+			} catch (Exception $e) {
+				echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+			}			
 		} else {
 			$page_flag = 0;
 		}
-		
 	}
 
-		
 }
+
 function validation($data) {
 	$error = array();
 
