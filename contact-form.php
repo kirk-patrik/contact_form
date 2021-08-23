@@ -9,17 +9,13 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
-
-
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // 変数の初期化
 $clean = array();
 $error = array();
 // サニタイズ
 if( !empty($_POST) ) {
-	foreach( array_slice($_POST,1)  as $key => $value ) {
+	foreach($_POST  as $key => $value ) {
 		$clean[$key] = htmlspecialchars( $value, ENT_QUOTES);
 	} 
 }
@@ -60,7 +56,7 @@ if( !empty($clean['btn_submit'])) {
 			mb_internal_encoding("UTF-8");
 		
 			// // 件名を設定
-			$auto_reply_subject = 'お問い合わせいただきありがとうございます。｜Locaop';
+			$auto_reply_subject = '【資料請求】自動返信メール｜Locaop';
 			// // 本文を設定
 			$auto_reply_text .=  $clean['your_name'] . "様\n\n";
 			$auto_reply_text .= "この度は、お問い合わせ頂きありがとうございます。\n";
@@ -68,12 +64,12 @@ if( !empty($clean['btn_submit'])) {
 			$auto_reply_text .= "内容をご確認の上、担当者より追ってご連絡させていただきますので\n";
 			$auto_reply_text .= "今しばらくお待ち頂きますようお願い申し上げます。\n\n";
 			$auto_reply_text .= "-----以下送信内容-----\n";	
-			$auto_reply_text .= "お問い合わせ内容: " . $_POST['customer_attr'][0] . " - " . $_POST['customer_attr'][1] . " - " . $_POST['customer_attr'][2] . " - " . $_POST['customer_attr'][3] . "\n";
+			// $auto_reply_text .= "お問い合わせ内容: " . $_POST['customer_attr'][0] . " - " . $_POST['customer_attr'][1] . " - " . $_POST['customer_attr'][2] . " - " . $_POST['customer_attr'][3] . "\n";
 			$auto_reply_text .= "お名前: " . $clean['your_name'] . "\n";
 			$auto_reply_text .= "メールアドレス: " . $clean['email'] . "\n";
 			$auto_reply_text .= "会社名: " . $clean['company_name'] . "\n";	
 			$auto_reply_text .= "電話番号: " . $clean['tel'] . "\n";
-			$auto_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
+			// $auto_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
 			$auto_reply_text .= "プライバシーポリシー: 同意済み\n";
 			$auto_reply_text .= "---------------------------- \n";
 			$auto_reply_text .= "■本メールは送信専用メールです。\n";
@@ -90,59 +86,71 @@ if( !empty($clean['btn_submit'])) {
 			$autobody .= $auto_reply_text . "\n";
 
 			// // 運営側へ送るメールの件名
-			$admin_reply_subject = "LocaopLPよりお問い合わせがありました。";
+			$admin_reply_subject = "LocaopLPより資料請求がありました。";
 			// // 本文を設定;
 			$admin_reply_text .= "LocaopLPより、問い合わせがありました。\n 送信内容は以下です。\n\n";
 			$admin_reply_text .= "-----以下送信内容--------\n";
-			$admin_reply_text .= "お問い合わせ内容: " . $_POST['customer_attr'][0] . " - " . $_POST['customer_attr'][1] . " - " . $_POST['customer_attr'][2] . " - " . $_POST['customer_attr'][3] . "\n";
+			// $admin_reply_text .= "お問い合わせ内容: " . $_POST['customer_attr'][0] . " - " . $_POST['customer_attr'][1] . " - " . $_POST['customer_attr'][2] . " - " . $_POST['customer_attr'][3] . "\n";
 			$admin_reply_text .= "お名前: " . $clean['your_name'] . "\n";
 			$admin_reply_text .= "メールアドレス: " . $clean['email'] . "\n";
 			$admin_reply_text .= "会社名: " . $clean['company_name'] . "\n";
 			$admin_reply_text .= "電話番号: " . $clean['tel'] . "\n";
-			$admin_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
+			// $admin_reply_text .= "お問い合わせ内容: " . nl2br($clean['contents']) . "\n";
 			$admin_reply_text .= "プライバシーポリシー: 同意済み\n";
 			$admin_reply_text .= "---------------------------- \n\n";
 			$admin_reply_text .= "送信された日時: " . date("Y/m/d D H:i") . "\n";
 			$adminbody .= $admin_reply_text . "\n";
 
+			// MAIL CONSTANT
+			$host = 'email-smtp.ap-northeast-1.amazonaws.com';
+			$port = 465;
+			$encryption = "ssl";
+			$usernameSmtp = 'AKIAQODK7J2PRX5YTCPV';
+			$passwordSmtp = 'BNL69rC9p+EXwGyTkqulyGd5pbNGy35xFbaNEshm96jr';
 
+			//Create an instance; passing `true` enables exceptions
+			$mail = new PHPMailer(true);
+			
 			try {
 				//Server settings
-				$mail->SMTPDebug = 0;                      					//Enable verbose debug output
+				$mail->SMTPDebug = 0;                      //Enable verbose debug output
 				$mail->isSMTP();                                            //Send using SMTP
-				$mail->Host       = 'smtp.gmail.com';                     	//Set the SMTP server to send through
+				$mail->Host       = $host;                     	//Set the SMTP server to send through
 				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-				$mail->Username   = 'markariel.maata@bpoc.co.jp';           //SMTP username
-				$mail->Password   = 'hipe1108';                             //SMTP password
-				$mail->SMTPSecure = "ssl";            						//Enable implicit TLS encryption
-				$mail->Port       = 465;     								//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-				$mail->CharSet = 'ISO-2022-JP';                               
+				$mail->Username   = $usernameSmtp;           //SMTP username
+				$mail->Password   = $passwordSmtp;                             //SMTP password
+				$mail->SMTPSecure = $encryption;          						//Enable implicit TLS encryption
+				$mail->Port       = $port;     								//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+				$mail->CharSet = 'UTF-8';                               
 			
 				//Recipients
-				$mail->setFrom('markariel.maata@bpoc.co.jp', '');
-				$mail->addReplyTo('markariel.maata@bpoc.co.jp', '');
+				$mail->setFrom('cs@locaop.jp', 'Locaopカスタマーサクセス');
+				$mail->addReplyTo('cs@locaop.jp', 'Locaopカスタマーサクセス');
 			
 				//Content
 				$mail->addAddress($clean['email']);     //Add a recipient
 				$mail->isHTML(false);            
 				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
-				$mail->Subject =mb_encode_mimeheader($auto_reply_subject, "ISO-2022-JP-MS");
+				$mail->Subject = mb_encode_mimeheader($auto_reply_subject, "ISO-2022-JP-MS");
 				$mail->Body    = $autobody;
 				$mail->send();
 
 				$mail->ClearAllRecipients();
 
 				//Content
-				$mail->addAddress('markariel.maata@bpoc.co.jp');     		//Add a recipient
+				$mail->addAddress('cs@locaop.jp');     		//Add a recipient
 				$mail->isHTML(false);            
 				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
-				$mail->Subject =mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
+				$mail->Subject = mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
 				$mail->Body    = $adminbody;
 				$mail->send();
 
+			} catch (phpmailerException $e) {
+				echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
 			} catch (Exception $e) {
-				echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-			}			
+				echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
+			}	
+					
 		} else {
 			$page_flag = 0;
 		}
@@ -153,9 +161,9 @@ if( !empty($clean['btn_submit'])) {
 function validation($data) {
 	$error = array();
 
-	if( empty($_POST['customer_attr'])) {
-		$error['customer_attr'] = "「お客様属性」は入力必須項目です。";
-	}
+	// if( empty($_POST['customer_attr'])) {
+	// 	$error['customer_attr'] = "「お客様属性」は入力必須項目です。";
+	// }
 
 	// 氏名のバリデーション
 	if( empty($data['your_name']) ) {
@@ -179,11 +187,11 @@ function validation($data) {
 	}
 
 	// 電話番号のバリデーション
-	// if( empty($data['tel']) ) {
-	// 	$error['tel'] = "「電話番号」は入力必須項目です。";
-	// } elseif( !preg_match( '/^[0-9]+[0-9.-]+$/', $data['tel']) ) {
-	// 	$error['tel'] = "正しい形式で入力してください。";
-	// }
+	if( empty($data['tel']) ) {
+		$error['tel'] = "「電話番号」は入力必須項目です。";
+	} elseif( !preg_match( '/^[0-9]+[0-9.-]+$/', $data['tel']) ) {
+		$error['tel'] = "正しい形式で入力してください。";
+	}
 
 	// 氏名のバリデーション
 	// if( empty($data['contents']) ) {
