@@ -113,7 +113,7 @@ if( !empty($clean['btn_submit'])) {
 			
 			try {
 				//Server settings
-				$mail->SMTPDebug = 0;                      //Enable verbose debug output
+				$mail->SMTPDebug = 3;                      //Enable verbose debug output
 				$mail->isSMTP();                                            //Send using SMTP
 				$mail->Host       = $host;                     	//Set the SMTP server to send through
 				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -133,20 +133,24 @@ if( !empty($clean['btn_submit'])) {
 				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
 				$mail->Subject = mb_encode_mimeheader($auto_reply_subject, "ISO-2022-JP-MS");
 				$mail->Body    = $autobody;
-				$mail->send();
+				// $mail->send();
 
-				$mail->ClearAllRecipients();
+				if($mail->send()){
+					if(empty($mail->ClearAllRecipients())){
+						echo "true";
+						//Content
+						$mail->addAddress('markariel.maata@bpoc.co.jp');     		//Add a recipient
+						$mail->isHTML(false);            
+						$mail->ContentType = 'text/plain';                      	//Set email format to HTML
+						$mail->Subject = mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
+						$mail->Body    = $adminbody;
+						$mail->send();
 
-				//Content
-				$mail->addAddress('markariel.maata@bpoc.co.jp');     		//Add a recipient
-				$mail->isHTML(false);            
-				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
-				$mail->Subject = mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
-				$mail->Body    = $adminbody;
-				$mail->send();
-
-				$url = "https://locaop.hipetest.com/thanks.php";
-				header('Location: ' . $url, true, 301);
+						// $url = "https://locaop.hipetest.com/thanks.php";
+						// header('Location: ' . $url, true, 301);
+						require_once($_SERVER['DOCUMENT_ROOT'] . "/inc/thanks.php");
+					}
+				}
 
 			} catch (phpmailerException $e) {
 				echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
