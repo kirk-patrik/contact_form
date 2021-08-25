@@ -102,11 +102,11 @@ if( !empty($clean['btn_submit'])) {
 			$adminbody .= $admin_reply_text . "\n";
 
 			// MAIL CONSTANT
-			$host = 'email-smtp.ap-northeast-1.amazonaws.com';
+			$host = 'smtp.gmail.com';
 			$port = 465;
 			$encryption = "ssl";
-			$usernameSmtp = 'AKIAQODK7J2PRX5YTCPV';
-			$passwordSmtp = 'BNL69rC9p+EXwGyTkqulyGd5pbNGy35xFbaNEshm96jr';
+			$usernameSmtp = 'markariel.maata@bpoc.co.jp';
+			$passwordSmtp = 'hipe1108';
 
 			//Create an instance; passing `true` enables exceptions
 			$mail = new PHPMailer(true);
@@ -124,8 +124,8 @@ if( !empty($clean['btn_submit'])) {
 				$mail->CharSet = 'UTF-8';                               
 			
 				//Recipients
-				$mail->setFrom('cs@locaop.jp', 'Locaopカスタマーサクセス');
-				$mail->addReplyTo('cs@locaop.jp', 'Locaopカスタマーサクセス');
+				$mail->setFrom('markariel.maata@bpoc.co.jp', 'Locaopカスタマーサクセス');
+				$mail->addReplyTo('markariel.maata@bpoc.co.jp', 'Locaopカスタマーサクセス');
 			
 				//Content
 				$mail->addAddress($clean['email']);     //Add a recipient
@@ -138,12 +138,15 @@ if( !empty($clean['btn_submit'])) {
 				$mail->ClearAllRecipients();
 
 				//Content
-				$mail->addAddress('cs@locaop.jp');     		//Add a recipient
+				$mail->addAddress('markariel.maata@bpoc.co.jp');     		//Add a recipient
 				$mail->isHTML(false);            
 				$mail->ContentType = 'text/plain';                      	//Set email format to HTML
 				$mail->Subject = mb_encode_mimeheader($admin_reply_subject, "ISO-2022-JP-MS");
 				$mail->Body    = $adminbody;
 				$mail->send();
+
+				$url = "https://locaop.hipetest.com/thanks.php";
+				header('Location: ' . $url, true, 301);
 
 			} catch (phpmailerException $e) {
 				echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
@@ -223,9 +226,9 @@ require_once(dirname(__FILE__)."/inc/confirm.php");
  ?>
 <?php elseif( $page_flag === 2 ):
 	// サンクスページへリダイレクト
-// $url = "https://www.e-vision.co.jp/lp/inc/thanks.php";
+// $url = "https://locaop.hipetest.com/thanks.php";
 // header('Location: ' . $url, true, 301);
-require_once(dirname(__FILE__)."/inc/thanks.html");
+// require_once($_SERVER['DOCUMENT_ROOT'] . "/thanks.html");
 exit;
  ?>
 <?php else:
